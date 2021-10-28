@@ -21,12 +21,14 @@ Github Action to check for presence or absence of a PR/issue label
 
 # Example use
 
-TODO
+For a simple check that a label exists on the current PR:
 
 ```yml
 steps:
-  - name: Check for label
+  - name: Check for present label
     uses: egmacke/action-check-label@v1
     with:
-      label: some-label
+      label: test
 ```
+
+For more examples, see `.github/workflows/test.yml`
