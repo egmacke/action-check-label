@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": false,
+    "baseUrl": ".",
+
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noEmitOnError": false,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "removeComments": true,
+    "paths": {
+      "action/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"]
+}

@@ -1,0 +1,9 @@
+name: Check for a label
+author: egmacke
+description: Check for the presence or absence of a label on a PR
+inputs:
+  
+runs:
+  using: node12
+  main: dist/index.js
+    
