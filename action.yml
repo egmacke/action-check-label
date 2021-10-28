@@ -1,0 +1,32 @@
+name: action-check-label
+author: egmacke
+description: Check for the presence or absence of a label on a PR
+inputs:
+  label:
+    description: The label to test for
+    required: true
+  state:
+    description: The state of the label
+    required: false
+    default: 'present'
+  github_token:
+    description: A github token
+    required: false
+    default: ${{ github.token }}
+  repo:
+    description: The owner and repository name
+    required: false
+    default: ${{ github.repository }}
+  fail_on_error:
+    description: Whether to fail the workflow if the state doesn't match
+    required: false
+    default: 'true'
+  
+runs:
+  using: node12
+  main: dist/index.js
+
+branding:
+  color: purple
+  icon: bookmark
+    
