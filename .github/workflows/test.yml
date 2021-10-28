@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add test label
-        uses: actions-ecosystem/action-add-labels@v1.1.0
+        uses: actions-ecosystem/action-add-labels@v1.1.3
         with:
           labels: ${{ env.LABEL }}
           github_token: ${{ github.token }}
