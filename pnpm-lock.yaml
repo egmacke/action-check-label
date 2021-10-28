@@ -3,13 +3,13 @@ lockfileVersion: 5.3
 specifiers:
   '@actions/core': ^1.6.0
   '@actions/github': ^5.0.0
-  '@types/jest': ^27.0.2
-  '@types/node': ^16.11.1
-  '@vercel/ncc': ^0.31.1
-  jest: ^27.3.1
-  ts-jest: ^27.0.7
-  ts-node: ^10.3.0
-  typescript: ^4.4.4
+  '@types/jest': 27.0.2
+  '@types/node': 16.11.6
+  '@vercel/ncc': 0.31.1
+  jest: 27.3.1
+  ts-jest: 27.0.7
+  ts-node: 10.4.0
+  typescript: 4.4.4
 
 dependencies:
   '@actions/core': 1.6.0
@@ -1366,6 +1366,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
