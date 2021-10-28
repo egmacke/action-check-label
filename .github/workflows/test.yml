@@ -1,3 +1,5 @@
+name: Test steps
+
 on:
   pull_request:
 
@@ -16,26 +18,26 @@ jobs:
           labels: ${{ env.LABEL }}
 
       - name: Check for present label
-        uses: egmacke/action-check-label@master
+        uses: egmacke/action-check-label@v0.1
         with:
           label: ${{ env.LABEL }}
           state: 'present'
 
       - name: Check for absent label
-        uses: egmacke/action-check-label@master
+        uses: egmacke/action-check-label@v0.1
         with:
           label: ${{ env.MISSING_LABEL }}
           state: 'absent'
 
       - name: Check for absent label that is present, but don't fail
-        uses: egmacke/action-check-label@master
+        uses: egmacke/action-check-label@v0.1
         with:
           label: ${{ env.LABEL }}
           state: 'absent'
           fail_on_error: false
 
       - name: Check for absent label that is present, and fail
-        uses: egmacke/action-check-label@master
+        uses: egmacke/action-check-label@v0.1
         continue-on-error: true
         with:
           label: ${{ env.LABEL }}
