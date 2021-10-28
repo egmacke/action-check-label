@@ -1,4 +1,4 @@
-import { getInput, setFailed, setOutput } from "@actions/core";
+import { getInput, setFailed, setOutput, warning } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
 enum State {
@@ -34,10 +34,13 @@ const action = async () => {
 
     setOutput("pass", pass);
 
-    if (!pass && failOnError) {
-      setFailed(
-        `Label ${label} was expected to be ${requiredState} but was ${actualState}`
-      );
+    if (!pass) {
+      const message = `Label ${label} was expected to be ${requiredState} but was ${actualState}`;
+      if (failOnError) {
+        setFailed(message);
+      } else {
+        warning(message);
+      }
     }
   } catch (error) {
     // Something went very wrong.
