@@ -1,0 +1,44 @@
+on:
+  pull_request:
+
+env:
+  LABEL: testing
+  MISSING_LABEL: missing
+  VERSION: master
+
+jobs:
+  test:
+    name: Test Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add test label
+        uses: actions-ecosystem/action-add-labels@v1.1.0
+        with:
+          labels: ${{ env.LABEL }}
+
+      - name: Check for present label
+        uses: egmacke/action-check-label@${{ env.VERSION }}
+        with:
+          label: ${{ env.LABEL }}
+          state: 'present'
+
+      - name: Check for absent label
+        uses: egmacke/action-check-label@${{ env.VERSION }}
+        with:
+          label: ${{ env.MISSING_LABEL }}
+          state: 'absent'
+
+      - name: Check for absent label that is present, but don't fail
+        uses: egmacke/action-check-label@${{ env.VERSION }}
+        with:
+          label: ${{ env.LABEL }}
+          state: 'absent'
+          fail_on_error: false
+
+      - name: Check for absent label that is present, and fail
+        uses: egmacke/action-check-label@${{ env.VERSION }}
+        continue-on-error: true
+        with:
+          label: ${{ env.LABEL }}
+          state: 'absent'
+      

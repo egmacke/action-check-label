@@ -20,7 +20,7 @@ inputs:
   fail_on_error:
     description: Whether to fail the workflow if the state doesn't match
     required: false
-    default: 'false'
+    default: 'true'
   
 runs:
   using: node12
