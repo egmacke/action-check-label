@@ -4,7 +4,6 @@ on:
 env:
   LABEL: testing
   MISSING_LABEL: missing
-  VERSION: master
 
 jobs:
   test:
@@ -17,26 +16,26 @@ jobs:
           labels: ${{ env.LABEL }}
 
       - name: Check for present label
-        uses: egmacke/action-check-label@${{ env.VERSION }}
+        uses: egmacke/action-check-label@master
         with:
           label: ${{ env.LABEL }}
           state: 'present'
 
       - name: Check for absent label
-        uses: egmacke/action-check-label@${{ env.VERSION }}
+        uses: egmacke/action-check-label@master
         with:
           label: ${{ env.MISSING_LABEL }}
           state: 'absent'
 
       - name: Check for absent label that is present, but don't fail
-        uses: egmacke/action-check-label@${{ env.VERSION }}
+        uses: egmacke/action-check-label@master
         with:
           label: ${{ env.LABEL }}
           state: 'absent'
           fail_on_error: false
 
       - name: Check for absent label that is present, and fail
-        uses: egmacke/action-check-label@${{ env.VERSION }}
+        uses: egmacke/action-check-label@master
         continue-on-error: true
         with:
           label: ${{ env.LABEL }}
