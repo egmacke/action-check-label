@@ -10,13 +10,14 @@ Github Action to check for presence or absence of a PR/issue label
 | `state`         | The state of the label [`present`, `absent`]            | `string`  | `false`  | `present`                  |
 | `github_token`  | A github token                                          | `string`  | `false`  | `${{github.token}}`        |
 | `repo`          | The owner and repository name                           | `string`  | `false`  | `${{ github.repository }}` |
-| `fail_on_error` | Whether to fail the workflow if the state doesn't match | `boolean` | `false`  | `false`                    |
+| `fail_on_error` | Whether to fail the workflow if the state doesn't match | `boolean` | `false`  | `true`                     |
 
 ## Output
 
-| Name | Description                                                          |
-| ---- | -------------------------------------------------------------------- |
-| pass | Whether the state matched the expected state [`true`, `false`, `''`] |
+| Name  | Description                                                    |
+| ----- | -------------------------------------------------------------- |
+| state | The actual state of the label [`present`, `absent`]            |
+| pass  | Whether the state matched the expected state [`true`, `false`] |
 
 # Example use
 
