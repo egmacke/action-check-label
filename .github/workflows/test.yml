@@ -16,6 +16,7 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1.1.0
         with:
           labels: ${{ env.LABEL }}
+          github_token: ${{ github.token }}
 
       - name: Check for present label
         uses: egmacke/action-check-label@v0.1
