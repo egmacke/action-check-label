@@ -5,7 +5,7 @@ const action = async () => {
   try {
     // Load input values
     const label = getInput("label", { required: true });
-    const requiredState = (getInput("state") ?? "present") as State;
+    const requiredState = getInput("state") as State;
     const githubToken = getInput("github_token");
     const [owner, repo] = getInput("repo").split("/");
     const failOnError = getInput("fail_on_error") === "true";
