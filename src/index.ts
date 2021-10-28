@@ -1,6 +1,11 @@
 import { getInput, setFailed, setOutput } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
+enum State {
+  PRESENT = "present",
+  ABSENT = "absent",
+}
+
 const action = async () => {
   try {
     // Load input values
