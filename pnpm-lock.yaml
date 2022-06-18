@@ -5,7 +5,7 @@ specifiers:
   '@actions/github': ^5.0.0
   '@types/jest': 27.0.2
   '@types/node': 16.11.6
-  '@vercel/ncc': 0.31.1
+  '@vercel/ncc': 0.34.0
   jest: 27.3.1
   ts-jest: 27.0.7
   ts-node: 10.4.0
@@ -18,7 +18,7 @@ dependencies:
 devDependencies:
   '@types/jest': 27.0.2
   '@types/node': 16.11.6
-  '@vercel/ncc': 0.31.1
+  '@vercel/ncc': 0.34.0
   jest: 27.3.1_ts-node@10.4.0
   ts-jest: 27.0.7_2c4ca6574207836d1023f54689cc81ac
   ts-node: 10.4.0_0cb88d80cb04d25b21fa3ec194608c65
@@ -229,6 +229,8 @@ packages:
     resolution: {integrity: sha512-BRYa3wcQnjS/nqI8Ac94pYYpJfojHVvVXJ97+IDCImX4Jc8W8Xv1+47enbruk+q1etOpsQNwnfFcNGw+gtPGxA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.15.6
     dev: true
 
   /@babel/plugin-syntax-async-generators/7.8.4_@babel+core@7.15.8:
@@ -802,8 +804,8 @@ packages:
       '@types/yargs-parser': 20.2.1
     dev: true
 
-  /@vercel/ncc/0.31.1:
-    resolution: {integrity: sha512-g0FAxwdViI6UzsiVz5HssIHqjcPa1EHL6h+2dcJD893SoCJaGdqqgUF09xnMW6goWnnhbLvgiKlgJWrJa+7qYA==}
+  /@vercel/ncc/0.34.0:
+    resolution: {integrity: sha512-G9h5ZLBJ/V57Ou9vz5hI8pda/YQX5HQszCs3AmIus3XzsmRn/0Ptic5otD3xVST8QLKk7AMk7AqpsyQGN7MZ9A==}
     hasBin: true
     dev: true
 
