@@ -44,7 +44,7 @@ const action = async () => {
     }
   } catch (error) {
     // Something went very wrong.
-    setFailed(error);
+    setFailed(error as Error);
   }
 };
 
