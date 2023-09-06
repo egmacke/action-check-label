@@ -1,24 +1,24 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@actions/core': ^1.6.0
+  '@actions/core': ^1.10.0
   '@actions/github': ^5.0.0
   '@types/jest': 29.0.3
   '@types/node': 16.11.6
-  '@vercel/ncc': 0.31.1
+  '@vercel/ncc': 0.38.0
   jest: 29.0.3
   ts-jest: 29.0.2
   ts-node: 10.9.1
   typescript: 4.4.4
 
 dependencies:
-  '@actions/core': 1.6.0
+  '@actions/core': 1.10.0
   '@actions/github': 5.0.0
 
 devDependencies:
   '@types/jest': 29.0.3
   '@types/node': 16.11.6
-  '@vercel/ncc': 0.31.1
+  '@vercel/ncc': 0.38.0
   jest: 29.0.3_94edc38b18a8dc33d099da8ebeb41b99
   ts-jest: 29.0.2_jest@29.0.3+typescript@4.4.4
   ts-node: 10.9.1_0cb88d80cb04d25b21fa3ec194608c65
@@ -26,10 +26,11 @@ devDependencies:
 
 packages:
 
-  /@actions/core/1.6.0:
-    resolution: {integrity: sha512-NB1UAZomZlCV/LmJqkLhNTqtKfFXJZAUPcfl/zqG7EfsQdeUJtaWO98SGbuQ3pydJ3fHl2CvI/51OKYlCYYcaw==}
+  /@actions/core/1.10.0:
+    resolution: {integrity: sha512-2aZDDa3zrrZbP5ZYg159sNoLRb61nQ7awl5pSvIq5Qpj81vwDzdMRKzkWJGJuwVvWpvZKx7vspJALyvaaIQyug==}
     dependencies:
-      '@actions/http-client': 1.0.11
+      '@actions/http-client': 2.1.1
+      uuid: 8.3.2
     dev: false
 
   /@actions/github/5.0.0:
@@ -43,6 +44,12 @@ packages:
 
   /@actions/http-client/1.0.11:
     resolution: {integrity: sha512-VRYHGQV1rqnROJqdMvGUbY/Kn8vriQe/F9HR2AlYHzmKuM/p3kjNuXhmdBfcVgsvRWTz5C5XW5xvndZrVBuAYg==}
+    dependencies:
+      tunnel: 0.0.6
+    dev: false
+
+  /@actions/http-client/2.1.1:
+    resolution: {integrity: sha512-qhrkRMB40bbbLo7gF+0vu+X+UawOvQQqNAA/5Unx774RS8poaOhThDOG6BGmxvAnxhQnDp2BG/ZUm65xZILTpw==}
     dependencies:
       tunnel: 0.0.6
     dev: false
@@ -859,8 +866,8 @@ packages:
       '@types/yargs-parser': 20.2.1
     dev: true
 
-  /@vercel/ncc/0.31.1:
-    resolution: {integrity: sha512-g0FAxwdViI6UzsiVz5HssIHqjcPa1EHL6h+2dcJD893SoCJaGdqqgUF09xnMW6goWnnhbLvgiKlgJWrJa+7qYA==}
+  /@vercel/ncc/0.38.0:
+    resolution: {integrity: sha512-B4YKZMm/EqMptKSFyAq4q2SlgJe+VCmEH6Y8gf/E1pTlWbsUJpuH1ymik2Ex3aYO5mCWwV1kaSYHSQOT8+4vHA==}
     hasBin: true
     dev: true
 
@@ -2432,6 +2439,11 @@ packages:
 
   /universal-user-agent/6.0.0:
     resolution: {integrity: sha512-isyNax3wXoKaulPDZWHQqbmIx1k2tb9fb3GGDBRxCscfYV2Ch7WxPArBsFEG8s/safwXTT7H4QGhaIkTp9447w==}
+    dev: false
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
     dev: false
 
   /v8-compile-cache-lib/3.0.1:
