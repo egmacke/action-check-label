@@ -5,7 +5,9 @@ on:
 
 env:
   LABEL: testing
+  LABEL2: testing2
   MISSING_LABEL: missing
+  MISSING_LABEL2: missing2
 
 jobs:
   test:
@@ -15,7 +17,9 @@ jobs:
       - name: Add test label
         uses: actions-ecosystem/action-add-labels@v1.1.3
         with:
-          labels: ${{ env.LABEL }}
+          labels: |
+            ${{ env.LABEL }}
+            ${{ env.LABEL2 }}
           github_token: ${{ github.token }}
 
       - name: Check for present label
@@ -29,6 +33,32 @@ jobs:
         with:
           label: ${{ env.MISSING_LABEL }}
           state: 'absent'
+          
+
+      - name: Check for multiple labels
+        uses: egmacke/action-check-label@main
+        with:
+          label: |
+            ${{ env.LABEL }}
+            ${{ env.LABEL2 }}
+          state: 'present'
+  
+      - name: Check for multiple labels absent
+        uses: egmacke/action-check-label@main
+        with:
+          label: |
+            ${{ env.MISSING_LABEL }}
+            ${{ env.MISSING_LABEL2 }}
+          state: 'absent'
+  
+      - name: Check for multiple labels some missing
+        uses: egmacke/action-check-label@main
+        with:
+          label: |
+            ${{ env.LABEL }}
+            ${{ env.MISSING_LABEL }}
+          state: 'present'
+          fail_on_error: false
 
       - name: Check for absent label that is present, but don't fail
         uses: egmacke/action-check-label@main
