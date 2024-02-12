@@ -2,6 +2,7 @@ name: Test steps
 
 on:
   pull_request:
+  workflow_dispatch:
 
 env:
   LABEL: testing
