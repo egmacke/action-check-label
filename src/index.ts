@@ -9,7 +9,10 @@ enum State {
 const action = async () => {
   try {
     // Load input values
-    const label = getInput("label", { required: true });
+    const labels = getInput('labels')
+      .split('\n')
+      .filter(l => l !== '');
+    // const label = getInput("label", { required: true });
     const requiredState = getInput("state") as State;
     const githubToken = getInput("github_token");
     const [owner, repo] = getInput("repo").split("/");
@@ -25,17 +28,28 @@ const action = async () => {
 
     const prLabels = pullRequest.data.labels;
 
-    const actualState = prLabels.some((prl) => prl.name === label)
+    const labelStates = labels.map(label => prLabels.some((prl) => prl.name === label)
       ? State.PRESENT
-      : State.ABSENT;
-    setOutput("state", actualState);
+      : State.ABSENT);
 
-    const pass = actualState === requiredState;
+    // Set state output to absent if any labels are missing.
+    const actualState = labelStates.some(state => state === State.ABSENT);
+
+    // Only pass if all labels are in required state
+    const pass = labelStates.every(state => state === requiredState)
+
+    setOutput("state", actualState);
 
     setOutput("pass", pass);
 
     if (!pass) {
-      const message = `Label ${label} was expected to be ${requiredState} but was ${actualState}`;
+      const message = labels.map(label => {
+        const actualState = prLabels.some((prl) => prl.name === label)
+        ? State.PRESENT
+        : State.ABSENT
+        return `Label ${label} was expected to be ${requiredState} but was ${actualState}`
+      }).join('\n');
+
       if (failOnError) {
         setFailed(message);
       } else {
