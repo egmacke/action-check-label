@@ -9,7 +9,7 @@ enum State {
 const action = async () => {
   try {
     // Load input values
-    const labels = getInput('labels')
+    const labels = getInput('label')
       .split('\n')
       .filter(l => l !== '');
     // const label = getInput("label", { required: true });
