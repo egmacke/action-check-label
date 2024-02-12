@@ -8,13 +8,10 @@ enum State {
 
 const action = async () => {
   try {
-    const labelInput = getInput('label');
-    setOutput('labelInput', labelInput);
-    console.log(labelInput);
-    debug(labelInput);
     // Load input values
     const labels = getInput('label')
       .split('\n')
+      .map(label => label.trim())
       .filter(l => l !== '');
     // const label = getInput("label", { required: true });
     const requiredState = getInput("state") as State;
