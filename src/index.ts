@@ -1,4 +1,4 @@
-import { getInput, setFailed, setOutput, warning } from "@actions/core";
+import { debug, getInput, setFailed, setOutput, warning } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
 enum State {
@@ -8,6 +8,10 @@ enum State {
 
 const action = async () => {
   try {
+    const labelInput = getInput('label');
+    setOutput('labelInput', labelInput);
+    console.log(labelInput);
+    debug(labelInput);
     // Load input values
     const labels = getInput('label')
       .split('\n')
