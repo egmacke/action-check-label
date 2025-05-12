@@ -1,5 +1,6 @@
-import { debug, getInput, setFailed, setOutput, warning } from "@actions/core";
+import { getInput, setFailed, setOutput, warning } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
+import { allLabelsAbsent, allLabelsPresent } from "action/label-check";
 
 enum State {
   PRESENT = "present",
@@ -13,13 +14,11 @@ const action = async () => {
       .split('\n')
       .map(label => label.trim())
       .filter(l => l !== '');
-    // const label = getInput("label", { required: true });
     const requiredState = getInput("state") as State;
     const githubToken = getInput("github_token");
     const [owner, repo] = getInput("repo").split("/");
     const failOnError = getInput("fail_on_error") === "true";
 
-    // WIP
     const client = getOctokit(githubToken);
 
     const pullRequest = await client.rest.pulls.get({
@@ -28,34 +27,29 @@ const action = async () => {
       pull_number: context.issue.number,
     });
 
-    const prLabels = pullRequest.data.labels;
-
-    const labelStates = labels.map(label => prLabels.some((prl) => prl.name === label)
-      ? State.PRESENT
-      : State.ABSENT);
-
-    // Set state output to absent if any labels are missing.
-    const actualState = labelStates.some(state => state === State.ABSENT);
+    const prLabels = pullRequest.data.labels.map(label => label.name);
 
     // Only pass if all labels are in required state
-    const pass = labelStates.every(state => state === requiredState)
-
-    setOutput("state", actualState);
+    const pass = requiredState === State.PRESENT ? allLabelsPresent(labels, prLabels) : allLabelsAbsent(labels, prLabels);
 
     setOutput("pass", pass);
 
     if (!pass) {
       const message = labels.map(label => {
-        const actualState = prLabels.some((prl) => prl.name === label)
+        const actualState = prLabels.some((prl) => prl === label)
         ? State.PRESENT
         : State.ABSENT
-        return `Label ${label} was expected to be ${requiredState} but was ${actualState}`
-      }).join('\n');
+
+        if (actualState === requiredState) {
+          return '';
+        }
+        return `\tLabel ${label} was expected to be ${requiredState} but was ${actualState}.`;
+      }).filter(msg => msg !== '').join('\n');
 
       if (failOnError) {
-        setFailed(message);
+        setFailed(`\n${message}`);
       } else {
-        warning(message);
+        warning(`\n${message}`);
       }
     }
   } catch (error) {

@@ -21,7 +21,10 @@ inputs:
     description: Whether to fail the workflow if the state doesn't match
     required: false
     default: 'true'
-  
+outputs:
+  pass:
+    description: Whether the label(s) is/are all present or absent
+
 runs:
   using: node20
   main: dist/index.js
