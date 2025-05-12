@@ -1,0 +1,42 @@
+name: Test PR
+
+on:
+  pull_request_target:
+    types:
+      - labeled
+      - unlabeled
+
+
+jobs:
+  test:
+    name: Test Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for present label
+        uses: egmacke/action-check-label@main
+        with:
+          label: build-pass
+          state: 'present'
+
+      - name: Check for absent label
+        uses: egmacke/action-check-label@main
+        with:
+          label: build-fail
+          state: 'absent'
+
+      - name: Check for multiple labels
+        uses: egmacke/action-check-label@main
+        with:
+          label: |
+            build-pass
+            build-pass2
+          state: 'present'
+          
+      - name: Check for multiple labels absent
+        uses: egmacke/action-check-label@main
+        with:
+          label: |
+            build-fail
+            build-fail2
+          state: 'absent'
+      
