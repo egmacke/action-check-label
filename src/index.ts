@@ -19,6 +19,7 @@ const action = async () => {
     const [owner, repo] = getInput("repo").split("/");
     const failOnError = getInput("fail_on_error") === "true";
 
+    // WIP
     const client = getOctokit(githubToken);
 
     const pullRequest = await client.rest.pulls.get({
