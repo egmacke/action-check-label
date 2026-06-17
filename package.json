@@ -1,6 +1,6 @@
 {
   "name": "action-check-label",
-  "version": "2.0.0",
+  "version": "5.0.0",
   "description": "Github Action check for the presence or absence of a label",
   "main": "dist/index.js",
   "scripts": {
