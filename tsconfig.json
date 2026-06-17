@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "target": "ES2021",
-    "lib": ["ES2021"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "esModuleInterop": true,
     "outDir": "dist",
+    "rootDir": "src",
     "declaration": false,
-    "baseUrl": ".",
 
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
@@ -23,7 +23,7 @@
     "allowJs": true,
     "removeComments": true,
     "paths": {
-      "action/*": ["src/*"]
+      "action/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]
